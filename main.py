@@ -4,9 +4,10 @@ import os
 import sys
 
 
-from pygame.examples.moveit import HEIGHT
 
-from stupid_image import bush_image, grass_image, grassleft_image
+
+from stupid_image import bush_image, grass_image, grassleft_image, grassright_image, grassbottom_image, grasstop_image, \
+    skala_image
 
 pygame.init()
 current_path = os.path.dirname(__file__)
@@ -21,20 +22,25 @@ font = pygame.font.SysFont('aria', 40)
 
 
 
-'def game_lvl():'
-
+def game_lvl():
+    sc.blit('dimgray')
 
 
 
 
 def restart():
-    global bush_group, grassmens_group,mobs_groups,grass_group
+    global bush_group, grassmens_group,mobs_groups,grass_group,skala_group
     bush_group = pygame.sprite.Group()
     grassmens_group = pygame.sprite.Group()
     mobs_group = pygame.sprite.Group()
     grass_group = pygame.sprite.Group()
+    skala_group = pygame.sprite.Group()
 
-class Bush(pygame.sprite.Sprite):
+
+
+
+
+class Skala(pygame.sprite.Sprite):
     def __init__(self,image,pos):
         pygame.sprite.Sprite.__init__(self)
         self.image = image
@@ -96,14 +102,23 @@ def drawmaps(nameFile):
         for j in range(0,len(maps)):
             pos[0] = j * 80
             if maps[i][j] == '1':
-                bush = Bush(bush_image,pos)
-                bush_group.add(bush)
+                skala = Skala(skala_image,pos)
+                skala_group.add(skala)
             elif maps[i][j] == '4':
                 grass = Grass(grass_image,pos)
                 grass_group.add(grass)
             elif maps[i][j] == '5':
                 grassleft = Edit_dir_tile(grassleft_image,pos)
                 Edit_dir_tile.add(grassleft)
+            elif maps[i][j] == '6':
+                grassright = Edit_dir_tile(grassright_image,pos)
+                Edit_dir_tile.add(grassright)
+            elif maps[i][j] == '2':
+                grassbottom = Edit_dir_tile(grassbottom_image,pos)
+                Edit_dir_tile.add(grassbottom)
+            elif maps[i][j] == '7':
+                grasstop = Edit_dir_tile(grasstop_image,pos)
+                Edit_dir_tile.add(grasstop)
 
 
 
@@ -181,10 +196,7 @@ def drawmaps(nameFile):
 
 
 
-
-
-
-
+restart()
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

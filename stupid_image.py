@@ -10,7 +10,7 @@ bush_image = pygame.image.load('image/tile map/bush_tile 1.png').convert_alpha()
 bushtower_image = pygame.image.load('image/tile map/bush_tile_tower.png').convert_alpha()
 enemy_image = pygame.image.load('image/enemy/right.png').convert_alpha()
 tower_image = load_image('image/tower 1/tower')
-
+skala_image = pygame.image.load('image/skala.png').convert_alpha()
 
 
 
